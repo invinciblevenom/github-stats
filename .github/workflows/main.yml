@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     # Sequence of tasks that will be executed as part of the job
     steps:
@@ -24,10 +24,10 @@ jobs:
     - uses: actions/checkout@v2
 
     # Run using Python 3.8 for consistency and aiohttp
-    - name: Set up Python 3.8
+    - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.10'
         architecture: 'x64'
 
     # Cache dependencies. From:
@@ -55,7 +55,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         EXCLUDED: ${{ secrets.EXCLUDED }}
         EXCLUDED_LANGS: ${{ secrets.EXCLUDED_LANGS }}
-        #EXCLUDE_FORKED_REPOS: true
+        EXCLUDE_FORKED_REPOS: true
         
     # Commits all changed files to the repository
     - name: Commit to the repo
